@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun Sayangku</title>
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* CSS Styles (Complete from previous response) */
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #ff8e8e;
+      --accent: #ff9e9e;
+      --dark: #2f2f2f;
+      --light: #ffffff;
+      --background: #fff5f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background);
+      color: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Satisfy', cursive;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+      z-index: 10;
+    }
+
+    /* Cover Page Styles */
+    .cover {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover h1 {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      background: linear-gradient(45deg, var(--primary), #ff9a9e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border: 5px solid var(--light);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cover-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 700px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 30px;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .card h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+      transform: translateX(-50%);
+    }
+
+    .card p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    /* Love Meter Styles */
+    .love-meter {
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto;
+      background: var(--light);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .love-meter-bar {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to right, #ff6b6b, #ff9e9e);
+      border-radius: 15px;
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .love-meter-fill {
+      height: 100%;
+      background: linear-gradient(to right, #ff1493, #ff69b4);
+      border-radius: 15px;
+      transition: width 1.5s ease-in-out;
+    }
+
+    .love-meter-text {
+      margin-top: 15px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Quiz Styles */
+    .quiz-container {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 30px auto;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .quiz-option {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--light);
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .quiz-option:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .quiz-option.correct {
+      background: linear-gradient(to right, #4CAF50, #81C784);
+    }
+
+    .quiz-option.incorrect {
+      background: linear-gradient(to right, #F44336, #E57373);
+    }
+
+    /* Romantic Story Styles */
+    .story-container {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    .story-text {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .reveal-btn {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--light);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .reveal-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    /* Navigation Styles */
+    .navigation {
+      position: fixed;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--light);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn:disabled {
+      background: linear-gradient(to right, #cccccc, #999999);
+      cursor: not-allowed;
+    }
+
+    .nav-dots {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .dot.active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+
+    /* Music Control */
+    .music-control {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--light);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    .music-control:hover {
+      transform: scale(1.1);
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    /* Page Indicator */
+    .page-indicator {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: var(--light);
+      padding: 8px 15px;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 14px;
+      z-index: 1000;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .cover h1 {
+        font-size: 2.5rem;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .love-meter, .quiz-container, .story-container {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      .navigation {
+        bottom: 30px;
+      }
+
+      .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      .music-control,
+      .page-indicator {
+        top: 20px;
+      }
+
+      .music-control {
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .page-indicator {
+        left: 20px;
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cover h1 {
+        font-size: 2rem;
+      }
+
+      .card h2 {
+        font-size: 1.8rem;
+      }
+    }
+  /* Coupon Styles */
+.coupons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.coupon {
+  width: 180px;
+  height: 110px;
+  background: linear-gradient(145deg, var(--primary), var(--secondary));
+  color: var(--light);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.coupon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.coupon.selected {
+  background: linear-gradient(145deg, #4CAF50, #81C784);
+  transform: scale(0.95);
+}
+
+.coupon-emoji {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.selected-coupons-list {
+  background: var(--light);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.selected-coupon-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px dashed var(--accent);
+}
+
+.selected-coupon-item:last-child {
+  border-bottom: none;
+}
+
+.selected-coupon-emoji {
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.coupon-limit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.coupon-limit-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.coupon-limit-modal-content {
+  background: var(--light);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.coupon-limit-close-btn {
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.coupon-limit-close-btn:hover {
+  background: var(--secondary);
+}
+
+.fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.firework {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  opacity: 0;
+  animation: firework 1s ease-out;
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.love-particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.love-particle {
+  position: absolute;
+  font-size: 24px;
+  animation: love-particle 3s ease-out;
+  opacity: 0;
+}
+
+@keyframes love-particle {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--translate-x), var(--translate-y)) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- Page Indicator -->
+  <div class="page-indicator" id="pageIndicator">
+    Halaman <span id="currentPage">1</span> dari <span id="totalPages">6</span>
+  </div>
+
+  <!-- Music Control -->
+  <div class="music-control" id="musicControl">
+    <span>🎵</span>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="media/hbd.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Cover Page -->
+  <div class="page active" id="page-1">
+    <div class="container">
+      <div class="cover">
+        <h1 class="animate__animated animate__fadeInDown">Selamat Ulang Tahun<br>Sayangku ❤️</h1>
+        <div class="cover-img animate__animated animate__zoomIn">
+          <img src="media/sayang.png" alt="Foto Kamu">
+        </div>
+        <p class="animate__animated animate__fadeIn">Hari ini harinya kamu, dan aku cuma mau kamu bahagia, sehat selalu,<br> dan semua impianmu bisa pelan-pelan jadi nyata.<br>08-04-2025.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Love Meter Page -->
+  <div class="page" id="page-2">
+    <div class="container">
+      <div class="love-meter">
+        <h2>Seberapa Besar Cintaku ke Kamu?</h2>
+        <div class="love-meter-bar">
+          <div class="love-meter-fill" style="width: 0;"></div>
+        </div>
+        <div class="love-meter-text">
+          Mengukur seberapa besar cintaku...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Page -->
+  <div class="page" id="page-3">
+    <div class="container">
+      <div class="quiz-container">
+        <div class="quiz-question">
+          <p>Cinta ku ke kamu aja tak terbatas, kalau cintamu ke aku terbatas nggak?</p>
+        </div>
+        <div class="quiz-options">
+          <button class="quiz-option" data-correct="false">Hmmm,gimana ya</button>
+          <button class="quiz-option" data-correct="true">Jelas engga, kan kamu sayangku</button>
+          <button class="quiz-option" data-correct="false">Kadang lowbat cintanya</button>
+          <button class="quiz-option" data-correct="false">Ga terbatas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Romantic Story Page -->
+  <div class="page" id="page-4">
+    <div class="container">
+      <div class="story-container">
+        <div class="story-text" id="storyText">
+          <p>Di hari spesialmu, aku pengen kamu tahu betapa berharganya kamu buat aku</p>
+        </div>
+        <button class="reveal-btn" id="revealStoryBtn">Lihat Pesan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coupon Page -->
+<div class="page" id="page-5">
+  <div class="container">
+    <h2>Pilih Kupon Hadiah</h2>
+    <div class="coupons-container">
+      <div class="coupon" data-coupon="🎬 Netflix and chill">
+        <div class="coupon-emoji">🎬</div>
+        <div class="coupon-text">Netflix and chill</div>
+      </div>
+      <div class="coupon" data-coupon="🍰 Ruang Interaksi">
+        <div class="coupon-emoji">🍰</div>
+        <div class="coupon-text">Ruang Interaksi</div>
+      </div>
+      <div class="coupon" data-coupon="🛵 Keliling Semarang">
+        <div class="coupon-emoji">🛵</div>
+        <div class="coupon-text">Keliling Semarang</div>
+      </div>
+      <div class="coupon" data-coupon="🍗 Beli nasi ayam">
+        <div class="coupon-emoji">🍗</div>
+        <div class="coupon-text">Beli nasi ayam</div>
+      </div>
+      <div class="coupon" data-coupon="💑 Only us (seharian berdua)">
+        <div class="coupon-emoji">💑</div>
+        <div class="coupon-text">Seharian tanpa hp. Only us</div>
+      </div>
+      <div class="coupon" data-coupon="🍧 Beli es duren">
+        <div class="coupon-emoji">🍧</div>
+        <div class="coupon-text">Beli es duren</div>
+      </div>
+    </div>
+    <div class="selected-coupons-list">
+      <h3>Kupon yang Dipilih:</h3>
+      <ul id="selectedCouponsList"></ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Coupon Limit Modal -->
+<div class="coupon-limit-modal" id="couponLimitModal">
+  <div class="coupon-limit-modal-content">
+    <h3>Batas Kupon Terlampaui</h3>
+    <p>Maaf ya sayang, kamu cuma bisa milih maksimal 3 kupon.</p>
+    <button class="coupon-limit-close-btn" id="couponLimitCloseBtn">Tutup</button>
+  </div>
+</div>
+
+<!-- Final Page (Updated) -->
+<div class="page" id="page-6">
+  <div class="fireworks-container" id="fireworksContainer"></div>
+  <div class="love-particles-container" id="loveParticlesContainer"></div>
+  <div class="container">
+    <div class="card">
+      <h2>Kupon yang Sayang Pilih</h2>
+      <div id="selectedCouponsDisplay"></div>
+      <h2>Penutup Manis dari Pacarmu yang Sayang Kamu</h2>
+      <p>Hai sayangku yang paling cantik seduniaaaaaaaaaaaaaaa</p>
+      <p>Pas kamu baca ini, aku cuma pengen bilang makasih udah jadi bagian dari hidup aku.</p>
+      <p>Semoga di umur barumu ini, semua hal yang kamu harapin pelan-pelan bisa kejadian ya sayang. Aku bakal selalu dukung kamu.</p>
+      <p>Dan... <br>
+      <strong>Sampai jumpa di Semarang ya sayang!</strong> Kita wujudin kupon yang udah kamu pilih satu per-satu</p>
+      <p>Aku sayang kamu, selalu. <br>
+      Selamat ulang tahun ya cintaku💗</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Navigation -->
+  <div class="navigation">
+    <button class="nav-btn" id="prevBtn" disabled><span>❮</span></button>
+    <button class="nav-btn" id="nextBtn"><span>❯</span></button>
+  </div>
+
+  <!-- Page Dots -->
+  <div class="nav-dots" id="navDots">
+    <!-- Dots will be added here via JavaScript -->
+  </div>
+
+  
+
+  <script>
+    // Variables
+let currentPage = 1;
+const totalPages = 6;
+const pages = document.querySelectorAll('.page');
+const musicControl = document.getElementById('musicControl');
+const bgMusic = document.getElementById('bgMusic');
+const pageIndicator = document.getElementById('pageIndicator');
+const currentPageElement = document.getElementById('currentPage');
+const totalPagesElement = document.getElementById('totalPages');
+const navDots = document.getElementById('navDots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Variables for coupons
+let selectedCoupons = [];
+const selectedCouponsList = document.getElementById('selectedCouponsList');
+const selectedCouponsDisplay = document.getElementById('selectedCouponsDisplay');
+const couponLimitModal = document.getElementById('couponLimitModal');
+const couponLimitCloseBtn = document.getElementById('couponLimitCloseBtn');
+
+// Background music
+bgMusic.volume = 0.5; // Set volume to 50%
+
+// Function to create navigation dots
+function createNavDots() {
+  for (let i = 1; i <= totalPages; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === currentPage) {
+      dot.classList.add('active');
+    }
+    dot.addEventListener('click', () => goToPage(i));
+    navDots.appendChild(dot);
+  }
+}
+
+// Function to update the active dot
+function updateDots() {
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index + 1 === currentPage);
+  });
+}
+
+// Function to go to a specific page
+function goToPage(page) {
+  if (page < 1 || page > totalPages) return;
+  
+  // Hide current page
+  pages[currentPage - 1].classList.remove('active');
+  
+  // Show new page
+  currentPage = page;
+  pages[currentPage - 1].classList.add('active');
+  
+  // Update UI elements
+  updatePageIndicator();
+  updateDots();
+  updateNavigationButtons();
+  
+  // Initialize page-specific features
+  initializePage();
+}
+
+// Function to update the page indicator
+function updatePageIndicator() {
+  currentPageElement.textContent = currentPage;
+  totalPagesElement.textContent = totalPages;
+}
+
+// Function to update navigation buttons
+function updateNavigationButtons() {
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+}
+
+// Event listeners for navigation buttons
+prevBtn.addEventListener('click', () => {
+  goToPage(currentPage - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  goToPage(currentPage + 1);
+});
+
+// Love Meter Animation
+function animateLoveMeter() {
+  const loveMeterFill = document.querySelector('.love-meter-fill');
+  const loveMeterText = document.querySelector('.love-meter-text');
+  
+  let lovePercentage = 0;
+  const animationDuration = 3000; // Durasi animasi dalam milidetik
+  const increment = 1;
+  
+  function updateLoveMeter() {
+    lovePercentage += increment;
+    loveMeterFill.style.width = `${lovePercentage}%`;
+    
+    if (lovePercentage >= 100) {
+      loveMeterText.textContent = 'Cintaku Padamu: Tak Terbatas! ∞';
+      loveMeterFill.style.width = '100%';
+      return;
+    }
+    
+    loveMeterText.textContent = `Cintaku Padamu: ${lovePercentage}% ❤️`;
+    
+    setTimeout(updateLoveMeter, animationDuration / 100);
+  }
+  
+  updateLoveMeter();
+}
+
+// Quiz Interaction
+function setupQuiz() {
+  const quizOptions = document.querySelectorAll('.quiz-option');
+  
+  quizOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      // Remove previous selections
+      quizOptions.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect');
+      });
+      
+      // Mark selected option
+      if (this.getAttribute('data-correct') === 'true') {
+        this.classList.add('correct');
+        setTimeout(() => {
+          alert('ASIKKKKKKKKKKK! 💕');
+        }, 500);
+      } else {
+        this.classList.add('incorrect');
+        setTimeout(() => {
+          alert('YANG BENER LAH WOI');
+        }, 500);
+      }
+    });
+  });
+}
+
+// Romantic Story Reveal
+function setupStoryReveal() {
+  const revealBtn = document.getElementById('revealStoryBtn');
+  const storyText = document.getElementById('storyText');
+  
+  revealBtn.addEventListener('click', function() {
+    const fullStory = `
+      <p>Selamat ulang tahun pacarku satu-satunya yang paling cantik sedunia!</p>
+<p>Semoga kamu selalu bahagia dan sehat terus ya, sayang.</p>
+<p>Semoga kita bisa terus bareng dan menghadapi semuanya sama-sama.</p>
+<p>Semoga semua yang kamu impikan bisa terwujud satu per satu ya, pelan-pelan tapi pasti.</p>
+<p>Aku kadang bingung mau ngetik apa... tapi yang jelas, aku bersyukur banget bisa jadi pacar kamu.</p>
+<p>Tetap jadi orang baik ya, jangan banyak dendam.</p>
+<p>Bahagia terus ya sayang, aku di sini selalu ada buat kamu. Selalu.</p>
+<p>I love you so much, my love! ❤️</p>
+    `;
+    storyText.innerHTML = fullStory;
+    revealBtn.style.display = 'none'; // supaya tombolnya hilang setelah diklik
+  });
+}
+
+
+// Music Control
+musicControl.addEventListener('click', () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicControl.innerHTML = '<span>⏸️</span>'; // Pause icon
+  } else {
+    bgMusic.pause();
+    musicControl.innerHTML = '<span>🎵</span>'; // Play icon
+  }
+});
+
+// Function to handle coupon selection
+function selectCoupon(coupon) {
+  if (selectedCoupons.length < 3) {
+    if (!selectedCoupons.includes(coupon)) {
+      selectedCoupons.push(coupon);
+      coupon.classList.add('selected');
+      updateSelectedCouponsList();
+    }
+  } else {
+    showCouponLimitModal();
+  }
+}
+
+// Function to update selected coupons list
+function updateSelectedCouponsList() {
+  selectedCouponsList.innerHTML = '';
+  
+  selectedCoupons.forEach(coupon => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('selected-coupon-item');
+    
+    const emoji = document.createElement('span');
+    emoji.classList.add('selected-coupon-emoji');
+    emoji.textContent = coupon.getAttribute('data-coupon').slice(0, 2);
+    
+    const text = document.createElement('span');
+    text.textContent = coupon.getAttribute('data-coupon').slice(3);
+    
+    listItem.appendChild(emoji);
+    listItem.appendChild(text);
+    selectedCouponsList.appendChild(listItem);
+  });
+}
+
+// Function to show coupon limit modal
+function showCouponLimitModal() {
+  couponLimitModal.classList.add('show');
+}
+
+// Function to hide coupon limit modal
+function hideCouponLimitModal() {
+  couponLimitModal.classList.remove('show');
+}
+
+// Function to display selected coupons on the final page
+function displaySelectedCoupons() {
+  selectedCouponsDisplay.innerHTML = '';
+  
+  selectedCoupons.forEach(coupon => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('selected-coupon-item');
+    
+    const emoji = document.createElement('span');
+    emoji.classList.add('selected-coupon-emoji');
+    emoji.textContent = coupon.getAttribute('data-coupon').slice(0, 2);
+    
+    const text = document.createElement('span');
+    text.textContent = coupon.getAttribute('data-coupon').slice(3);
+    
+    listItem.appendChild(emoji);
+    listItem.appendChild(text);
+    selectedCouponsDisplay.appendChild(listItem);
+  });
+}
+
+// Event listeners for coupon selection
+const coupons = document.querySelectorAll('.coupon');
+coupons.forEach(coupon => {
+  coupon.addEventListener('click', () => selectCoupon(coupon));
+});
+
+// Event listener for coupon limit modal close button
+couponLimitCloseBtn.addEventListener('click', hideCouponLimitModal);
+
+// Fireworks Effect
+function createFireworks() {
+  const fireworksContainer = document.getElementById('fireworksContainer');
+
+  function createFirework() {
+    const firework = document.createElement('div');
+    firework.classList.add('firework');
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    firework.style.left = `${x}px`;
+    firework.style.top = `${y}px`;
+
+    fireworksContainer.appendChild(firework);
+
+    setTimeout(() => {
+      firework.remove();
+    }, 1000);
+  }
+
+  let count = 0;
+  const intervalId = setInterval(() => {
+    createFirework();
+    count++;
+
+    if (count === 50) {
+      clearInterval(intervalId);
+    }
+  }, 100);
+}
+
+// Love Particles Effect
+function createLoveParticles() {
+  const loveParticlesContainer = document.getElementById('loveParticlesContainer');
+
+  function createLoveParticle() {
+    const loveParticle = document.createElement('div');
+    loveParticle.classList.add('love-particle');
+    loveParticle.innerText = '❤️';
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    loveParticle.style.left = `${x}px`;
+    loveParticle.style.top = `${y}px`;
+
+    const translateX = (Math.random() - 0.5) * 200;
+    const translateY = (Math.random() - 0.5) * 200;
+
+    loveParticle.style.setProperty('--translate-x', `${translateX}px`);
+    loveParticle.style.setProperty('--translate-y', `${translateY}px`);
+
+    loveParticlesContainer.appendChild(loveParticle);
+
+    setTimeout(() => {
+      loveParticle.remove();
+    }, 3000);
+  }
+
+  let count = 0;
+  const intervalId = setInterval(() => {
+    createLoveParticle();
+    count++;
+
+    if (count === 50) {
+      clearInterval(intervalId);
+    }
+  }, 200);
+}
+
+// Page Initialization
+function initializePage() {
+  // Call new feature initializations when page loads or changes
+  if (currentPage === 2) {
+    animateLoveMeter();
+  }
+  
+  if (currentPage === 3) {
+    setupQuiz();
+  }
+  
+  if (currentPage === 4) {
+    setupStoryReveal();
+  }
+  
+  if (currentPage === 6) {
+    displaySelectedCoupons();
+    createFireworks();
+    createLoveParticles();
+  }
+}
+
+// Initialize page on first load
+createNavDots();
+initializePage();
+
+// Key navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  }
+});
+  </script>
+</body>
+</html>
